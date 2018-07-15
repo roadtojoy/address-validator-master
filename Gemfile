@@ -56,3 +56,13 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#Used to do some basic address validation and parse the street address to its necessary components
+gem 'StreetAddress', :require => "street_address"
+
+#Used to verify that an address is real
+gem 'geocoder'
+
+#Used for some basic styling
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'

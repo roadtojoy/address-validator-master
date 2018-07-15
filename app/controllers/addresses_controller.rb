@@ -6,8 +6,13 @@ class AddressesController < ApplicationController
   def new; end
 
   def create
-    @address = Address.new(address_params)
-    @address.save
+    @address = AddressParser.new(address_params).parse
+
+    if @address && @address.save
+      flash.now[:success] = "Address saved successfully!"
+    else
+      flash.now[:warning] = "Address not saved. Please try again."
+    end
 
     render 'new'
   end
@@ -15,6 +20,6 @@ class AddressesController < ApplicationController
   private
 
   def address_params
-    params.permit(:city, :state)
+    params.permit(:street_address, :city, :state, :zip_code)
   end
 end
